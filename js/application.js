@@ -1,10 +1,17 @@
 var Application = function() {
+	this.pool = {};
+	this.getUniqeId = function() {
+		return ('Application_' + new Date().getTime());
+	}
 	this.apply = function(config, target) {
+		var id = this.getUniqeId();
+		target['id'] = id;
+		this.pool[id] = target;
 		for (var key in config) {
 			if (config.hasOwnProperty(key)) {
 				target[key] = config[key]
 			}
-		}	
+		}
 	}
 	this.apply(arguments[0], this);
 	this.apply({
