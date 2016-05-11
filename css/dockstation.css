@@ -1,0 +1,27 @@
+.main {
+	margin: 0;
+    height: 100%;
+	width: 100%;
+	position:relative;
+}
+
+.mainStatus {
+    border-style: solid;
+	position: absolute;
+	left: 0px;
+	top: 0px;	
+}
+
+.mainMenu {
+    border-style: solid;
+	position: absolute;
+	left: 0px;
+	top: 34px;
+}
+
+.mainContent {
+	border-style: solid;
+	position: absolute;
+	right: 0px;
+	top: 34px;
+}
