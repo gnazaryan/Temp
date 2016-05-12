@@ -1,10 +1,16 @@
 var Application = function() {
 	this.pool = {};
-	this.getUniqeId = function() {
-		return ('Application_' + new Date().getTime());
+	this.getUniqeId = function(target) {
+		function s4() {
+			return Math.floor((1 + Math.random()) * 0x10000)
+				.toString(16)
+				.substring(1);
+		}
+		return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+					 s4() + '-' + s4() + s4() + s4();
 	}
 	this.apply = function(config, target) {
-		var id = this.getUniqeId();
+		var id = this.getUniqeId(target);
 		target['id'] = id;
 		this.pool[id] = target;
 		for (var key in config) {
@@ -63,6 +69,22 @@ var Application = function() {
 				document.body.offsetWidth,
 				document.documentElement.clientWidth
 			);
+		},
+		register: function(target) {
+			var result = [];
+			if (target.listeners != null) {
+				for (var listener in target.listeners) {
+					result.push(this.aggregate(listener, '="app.fire(this, \'', 
+					listener, '\', \'',target.id, '\');" '));
+				}
+			}
+			return this.aggregate.apply(this, result);
+		},
+		fire: function(obj, listener, id) {
+			var target = this.pool[id];
+			if (target.listeners[listener] != null) {
+				target.listeners[listener].apply(target, [obj]);
+			}
 		}
 	}, this);
 }

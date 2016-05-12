@@ -6,22 +6,24 @@
 }
 
 .mainStatus {
-    border-style: solid;
+    border-bottom: dashed;
+	border-width: 4px;
 	position: absolute;
 	left: 0px;
 	top: 0px;	
 }
 
 .mainMenu {
-    border-style: solid;
+    border-right: dashed;
+	border-radius: 25px;
+	border-width: 4px;
 	position: absolute;
 	left: 0px;
-	top: 29px;
+	top: 25px;
 }
 
 .mainContent {
-	border-style: solid;
 	position: absolute;
 	right: 0px;
-	top: 29px;
+	top: 25px;
 }

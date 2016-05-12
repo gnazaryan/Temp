@@ -2,13 +2,13 @@ var DockStation = function() {
     app.apply(arguments[0], this);
 	app.apply({
 		render: function() {
-			var appWidth = app.getWidth() - 10;
-			var appHeight = app.getHeight() - 10;
-			this.statusWidth = appWidth + 4;
+			var appWidth = app.getWidth();
+			var appHeight = app.getHeight();
+			this.statusWidth = appWidth;
 			this.statusHeight = 25;
 			this.menuWidth = Math.ceil(appWidth*0.06);
 			this.menuHeight = appHeight - this.statusHeight;
-			this.contentWidth = appWidth - this.menuWidth + 1;
+			this.contentWidth = appWidth - this.menuWidth + 1 - 4;
 			this.contentHeight = appHeight - this.statusHeight;
 
 			var html = app.aggregate(
@@ -27,12 +27,32 @@ var DockStation = function() {
 			this.spaceShip = new MenuItem({
 				text: 'Spaceship',
 				width: this.menuWidth,
-				height: this.menuWidth
+				height: this.menuWidth,
+				icon: './images/space_ship_64x64.png',
+				color: '#FF681C',
+				listeners: {
+					onmouseover: function(obj) {
+						//debugger;
+					}
+				}
+			});
+			this.social = new MenuItem({
+				text: 'Social',
+				width: this.menuWidth,
+				height: this.menuWidth,
+				color: '#545454',
+				listeners: {
+					onmouseover: function(obj) {
+						
+					}
+				}
 			});
 			this.skies = new MenuItem({
 				text: 'Skies',
 				width: this.menuWidth,
 				height: this.menuWidth,
+				icon: './images/skies_64x64.png',
+				color: '#7ec0ee',
 				listeners: {
 					onmouseover: function(obj) {
 						
@@ -43,6 +63,8 @@ var DockStation = function() {
 				text: 'Calendar',
 				width: this.menuWidth,
 				height: this.menuWidth,
+				icon: './images/calendar_64x64.png',
+				color: '#18B51A',
 				listeners: {
 					onmouseover: function(obj) {
 						
@@ -50,17 +72,7 @@ var DockStation = function() {
 				}
 			});
 			this.mail = new MenuItem({
-				text: 'Mail',
-				width: this.menuWidth,
-				height: this.menuWidth,
-				listeners: {
-					onmouseover: function(obj) {
-						
-					}
-				}
-			});
-			this.social = new MenuItem({
-				text: 'Social',
+				text: 'X-mail',
 				width: this.menuWidth,
 				height: this.menuWidth,
 				listeners: {
@@ -85,10 +97,10 @@ var DockStation = function() {
 				height: this.menuHeight,
 				items: [
 				    this.spaceShip,
+					this.social,
 					this.skies,
 					this.calendar,
 					this.mail,
-					this.social,
 					this.media
 				]
 			});
