@@ -6,9 +6,9 @@ var DockStation = function() {
 			var appHeight = app.getHeight();
 			this.statusWidth = appWidth;
 			this.statusHeight = 25;
-			this.menuWidth = Math.ceil(appWidth*0.06);
+			this.menuWidth = 70;
 			this.menuHeight = appHeight - this.statusHeight;
-			this.contentWidth = appWidth - this.menuWidth + 1 - 4;
+			this.contentWidth = appWidth - this.menuWidth + 1 - 2;
 			this.contentHeight = appHeight - this.statusHeight;
 
 			var html = app.aggregate(
@@ -25,10 +25,11 @@ var DockStation = function() {
 
 			this.menuBarEl = document.getElementById('mainMenu');
 			this.spaceShip = new MenuItem({
-				text: 'Spaceship',
+				text: 'Space',
+				name: 'spaceship',
 				width: this.menuWidth,
 				height: this.menuWidth,
-				icon: './images/space_ship_64x64.png',
+				icon: './images/space_ship_32x32.png',
 				color: '#FF681C',
 				listeners: {
 					onmouseover: function(obj) {
@@ -38,8 +39,10 @@ var DockStation = function() {
 			});
 			this.social = new MenuItem({
 				text: 'Social',
+				name: 'social',
 				width: this.menuWidth,
 				height: this.menuWidth,
+				icon: './images/social_32x32.png',
 				color: '#545454',
 				listeners: {
 					onmouseover: function(obj) {
@@ -49,10 +52,11 @@ var DockStation = function() {
 			});
 			this.skies = new MenuItem({
 				text: 'Skies',
+				name: 'skies',
 				width: this.menuWidth,
 				height: this.menuWidth,
-				icon: './images/skies_64x64.png',
-				color: '#7ec0ee',
+				icon: './images/skies_32x32.png',
+				color: '#4AACF0',
 				listeners: {
 					onmouseover: function(obj) {
 						
@@ -61,9 +65,10 @@ var DockStation = function() {
 			});
 			this.calendar = new MenuItem({
 				text: 'Calendar',
+				name: 'calendar',
 				width: this.menuWidth,
 				height: this.menuWidth,
-				icon: './images/calendar_64x64.png',
+				icon: './images/calendar_32x32.png',
 				color: '#18B51A',
 				listeners: {
 					onmouseover: function(obj) {
@@ -73,8 +78,11 @@ var DockStation = function() {
 			});
 			this.mail = new MenuItem({
 				text: 'X-mail',
+				name: 'xmail',
 				width: this.menuWidth,
 				height: this.menuWidth,
+				icon: './images/mail_32x32.png',
+				color: '#FC2B47',
 				listeners: {
 					onmouseover: function(obj) {
 						
@@ -83,11 +91,15 @@ var DockStation = function() {
 			});
 			this.media = new MenuItem({
 				text: 'Media',
+				name: 'media',
 				width: this.menuWidth,
 				height: this.menuWidth,
+				icon: './images/media_32x32.png',
+				color: '#08232B',
 				listeners: {
 					onmouseover: function(obj) {
-						
+						var me = this;
+						debugger;
 					}
 				}
 			});

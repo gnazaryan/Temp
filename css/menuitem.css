@@ -1,5 +1,32 @@
-.menuItem {
+.menuItemspaceship, .menuItemsocial, .menuItemskies, .menuItemcalendar, .menuItemxmail, .menuItemmedia {
     text-align: center;
+	border-collapse: collapse;
+	border-spacing: 0;
 	vertical-align: bottom;
 	font-weight: bold;
+	font-size: 10pt;
+}
+table {border-collapse: collapse;}
+.menuItemspaceship:hover{
+   background-color:#FABEA0;
+}
+
+.menuItemsocial:hover{
+   background-color:#B5B5B5;
+}
+
+.menuItemskies:hover{
+   background-color:#A2CBE8;
+}
+
+.menuItemcalendar:hover{
+   background-color:#7BD17C;
+}
+
+.menuItemxmail:hover{
+   background-color:#FCB3BD;
+}
+
+.menuItemmedia:hover{
+   background-color:#497F8F;
 }

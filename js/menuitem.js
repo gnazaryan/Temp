@@ -13,7 +13,7 @@ var MenuItem = function() {
 				'; ');
 			}
 			return app.aggregate(
-				'<tr><td class="menuItem" ', app.register(this), ' style="', (this.color || ''), (this.icon || ''),
+				'<tr><td class="menuItem', this.name, '" ', app.register(this), ' style="', (this.color || ''), (this.icon || ''),
 					'width:', this.width, 'px; height: ', this.height, 'px">', this.text,
 				'</td></tr>'
 			);
