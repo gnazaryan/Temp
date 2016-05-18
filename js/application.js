@@ -26,6 +26,11 @@ var Application = function() {
 			this.dockStation = new DockStation({
 				target: this.target
 			});
+            this.menuSelector = new DelayedTask({
+                method: this.selectMenu,
+				scope: this
+		    });
+			this.menuSelector.delay(300);
 		},
 		aggregate: function() {
 			var result = "";
@@ -85,6 +90,9 @@ var Application = function() {
 			if (target.listeners[listener] != null) {
 				target.listeners[listener].apply(target, [obj]);
 			}
+		},
+		selectMenu: function() {
+			this.dockStation.selectMenu('spaceship');
 		}
 	}, this);
 }

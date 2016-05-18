@@ -23,8 +23,9 @@ var DockStation = function() {
 				);
 			app.update(this.target, html);
 
-			this.menuBarEl = document.getElementById('mainMenu');
-			this.spaceShip = new MenuItem({
+			this.mainMenuEl = document.getElementById('mainMenu');
+			this.mainStatusEl = document.getElementById('mainStatus');
+			this.spaceship = new MenuItem({
 				text: 'Space',
 				name: 'spaceship',
 				width: this.menuWidth,
@@ -76,7 +77,7 @@ var DockStation = function() {
 					}
 				}
 			});
-			this.mail = new MenuItem({
+			this.xmail = new MenuItem({
 				text: 'X-mail',
 				name: 'xmail',
 				width: this.menuWidth,
@@ -104,15 +105,15 @@ var DockStation = function() {
 				}
 			});
 			this.menuBar = new MenuBar({
-				target: this.menuBarEl,
+				target: this.mainMenuEl,
 				width: this.menuWidth,
 				height: this.menuHeight,
 				items: [
-				    this.spaceShip,
+				    this.spaceship,
 					this.social,
 					this.skies,
 					this.calendar,
-					this.mail,
+					this.xmail,
 					this.media
 				]
 			});
@@ -124,7 +125,12 @@ var DockStation = function() {
 			return this.menuBar;
 		},
 		getMenuBarEl: function() {
-			return this.menuBarEl;
+			return this.mainMenuEl;
+		},
+		selectMenu: function(name) {
+			this.mainStatusEl.style.borderColor = '#FF681C';//this[name].color;
+			this.mainMenuEl.style.borderColor = '#FF681C';//this[name].color;
+			
 		}
 	}, this);
 	this.render();
