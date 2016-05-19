@@ -1,5 +1,6 @@
 var Application = function() {
 	this.pool = {};
+	this.notificationPool = {};
 	this.getUniqeId = function(target) {
 		function s4() {
 			return Math.floor((1 + Math.random()) * 0x10000)
@@ -26,11 +27,11 @@ var Application = function() {
 			this.dockStation = new DockStation({
 				target: this.target
 			});
-            this.menuSelector = new DelayedTask({
+            /*this.menuSelector = new DelayedTask({
                 method: this.selectMenu,
 				scope: this
 		    });
-			this.menuSelector.delay(300);
+			this.menuSelector.delay(300);*/
 		},
 		aggregate: function() {
 			var result = "";
@@ -76,6 +77,14 @@ var Application = function() {
 			);
 		},
 		register: function(target) {
+			//register notification
+			if (target.group != null) {
+				if (this.notificationPool[target.group] == null) {
+					this.notificationPool[target.group] = [];
+				}
+				this.notificationPool[target.group].push(target);
+			}
+			//register listeners
 			var result = [];
 			if (target.listeners != null) {
 				for (var listener in target.listeners) {
@@ -84,6 +93,16 @@ var Application = function() {
 				}
 			}
 			return this.aggregate.apply(this, result);
+		},
+		notify: function(name, message, origin) {
+			var group = this.notificationPool[name];
+			if (group != null) {
+				for (var i = 0; i < group.length; i++) {
+					if (group[i].messanger != null) {
+						group[i].messanger(message, origin);
+					}
+				}
+			}
 		},
 		fire: function(obj, listener, id) {
 			var target = this.pool[id];

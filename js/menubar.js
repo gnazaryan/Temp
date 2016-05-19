@@ -10,6 +10,9 @@ var MenuBar = function() {
 				}
 				menuIrems.push('</table>');
 				app.update(this.target, app.aggregate.apply(app, menuIrems));
+				for (var i = 0; i < this.items.length; i++) {
+					this.items[i].render();
+				}
 			}
 		}
 	}, this);
